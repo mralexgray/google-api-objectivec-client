@@ -11,28 +11,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+
+ The sample app controllers are built with ARC, though the sources of the GTL library 
+ should be built without ARC using the compiler flag -fno-objc-arc in the 
+ Compile Sources build phase of the application target.
+
  */
-
-//
-//  DriveSampleWindowController.h
-//
-
-// The sample app controllers are built with ARC, though the sources of
-// the GTL library should be built without ARC using the compiler flag
-// -fno-objc-arc in the Compile Sources build phase of the application
-// target.
 
 #if !defined(__has_feature) || !__has_feature(objc_arc)
 #error "This file requires ARC support."
 #endif
 
-#import <Cocoa/Cocoa.h>
-
-#import "GTLDrive.h"
-#import "GTMOAuth2WindowController.h"
+@import Cocoa; @import GDrive;
 
 @interface DriveSampleWindowController : NSWindowController {
  @private
+  IBOutlet NSTextField *_querySize, *_duration;
+
   IBOutlet NSTextField *_signedInField;
   IBOutlet NSButton *_signedInButton;
 
@@ -43,16 +38,11 @@
   IBOutlet NSImageView *_thumbnailView;
 
   IBOutlet NSPopUpButton *_downloadButton;
-  IBOutlet NSButton *_viewButton;
-  IBOutlet NSButton *_duplicateButton;
-  IBOutlet NSButton *_trashButton;
-  IBOutlet NSButton *_deleteButton;
+  IBOutlet NSButton *_viewButton, *_duplicateButton, *_trashButton, *_deleteButton;
 
   IBOutlet NSButton *_uploadButton;
   IBOutlet NSProgressIndicator *_uploadProgressIndicator;
-  IBOutlet NSButton *_pauseUploadButton;
-  IBOutlet NSButton *_stopUploadButton;
-  IBOutlet NSButton *_newFolderButton;
+  IBOutlet NSButton *_pauseUploadButton, *_stopUploadButton, *_newFolderButton;
 
   IBOutlet NSSegmentedControl *_segmentedControl;
   IBOutlet NSTableView *_detailTable;
@@ -62,37 +52,37 @@
 
   // Client ID Sheet (Not needed by real applications)
   IBOutlet NSButton *_clientIDButton;
-  IBOutlet NSTextField *_clientIDRequiredTextField;
+  IBOutlet NSTextField *_clientIDRequiredTextField, *_clientIDField, *_clientSecretField;
   IBOutlet NSWindow *_clientIDSheet;
-  IBOutlet NSTextField *_clientIDField;
-  IBOutlet NSTextField *_clientSecretField;
 }
+
+@property (nonatomic) NSNumber * qSize;
 
 + (DriveSampleWindowController *)sharedWindowController;
 
-- (IBAction)signInClicked:(id)sender;
+- (IBAction)      signInClicked : z;
 
-- (IBAction)getFileList:(id)sender;
+- (IBAction)        getFileList : z;
 
-- (IBAction)cancelFileListFetch:(id)sender;
+- (IBAction)    cancelFileListFetch : z;
 
-- (IBAction)viewClicked:(id)sender;
-- (IBAction)duplicateClicked:(id)sender;
-- (IBAction)trashClicked:(id)sender;
-- (IBAction)deleteClicked:(id)sender;
+- (IBAction)            viewClicked : z;
+- (IBAction)       duplicateClicked : z;
+- (IBAction)           trashClicked : z;
+- (IBAction)          deleteClicked : z;
 
-- (IBAction)uploadFileClicked:(id)sender;
-- (IBAction)pauseUploadClicked:(id)sender;
-- (IBAction)stopUploadClicked:(id)sender;
-- (IBAction)createFolderClicked:(id)sender;
+- (IBAction)uploadFileClicked : z;
+- (IBAction)pauseUploadClicked : z;
+- (IBAction)stopUploadClicked : z;
+- (IBAction)createFolderClicked : z;
 
-- (IBAction)segmentedControlClicked:(id)sender;
+- (IBAction)segmentedControlClicked : z;
 
-- (IBAction)loggingCheckboxClicked:(id)sender;
+- (IBAction)loggingCheckboxClicked : z;
 
 // Client ID Sheet
-- (IBAction)clientIDClicked:(id)sender;
-- (IBAction)clientIDDoneClicked:(id)sender;
-- (IBAction)APIConsoleClicked:(id)sender;
+- (IBAction)clientIDClicked : z;
+- (IBAction)clientIDDoneClicked : z;
+- (IBAction)APIConsoleClicked : z;
 
 @end
